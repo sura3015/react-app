@@ -14,7 +14,7 @@ export default defineConfig({
       manifest: {
         name: "Groove-Log",
         short_name: "Groove-Log",
-        start_url: ".",
+        start_url: "/react-app/",
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#0f172a",
