@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+h1 {
+  font-size: 2.2em;
+  line-height: 1.1;
+}
+
+.material-icons.big-toys {
+  font-size: 28px; /* サイズの指定 */
+}
+
+.material-icons.add:active {
+  color: #24a014c4;
+}
+
+.material-icons.link {
+  font-size: 13px;
+}
+
+.material-icons.Addicon {
+  font-size: 34px;
+}
+
+.material-icons.Editicon {
+  font-size: 40px;
+}
+
+.material-icons.last_page {
+  font-size: 18px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #fdfdfd;
+  }
+  a:hover {
+    color: #747bff;
+  }
+}
