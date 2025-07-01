@@ -1,1 +1,1 @@
-{"name":"groove-log","short_name":"groove-log","start_url":"/react-app/","display":"standalone","background_color":"#ffffff","theme_color":"#42b883","lang":"en","scope":"/react-app/"}
+{"name":"Groove-Log","short_name":"Groove-Log","start_url":".","display":"standalone","background_color":"#ffffff","theme_color":"#0f172a","lang":"en","scope":"/react-app/","icons":[{"src":"paw.png","sizes":"192x192","type":"image/png"},{"src":"paw.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}
