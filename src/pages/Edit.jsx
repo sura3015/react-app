@@ -189,16 +189,25 @@ export default function Edit() {
           <label className="block text-sm font-medium mt-6">タグ</label>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <input
-                type="text"
-                value={tagInput}
-                onChange={(e) => setTagInput(e.target.value)}
-                onKeyDown={(e) =>
-                  e.key === "Enter" && (e.preventDefault(), handleAddTag())
-                }
-                className="w-full p-2 flex items-center border-b border-gray-500 focus:border-indigo-500 py-1 px-2 appearance-none focus:outline-none bg-transparent"
-                placeholder="Enterで追加"
-              />
+              <div className="flex items-center">
+                <input
+                  type="text"
+                  value={tagInput}
+                  onChange={(e) => setTagInput(e.target.value)}
+                  className="w-full p-2 flex items-center border-b border-gray-500 focus:border-indigo-500 py-1 px-2 appearance-none focus:outline-none bg-transparent"
+                  placeholder="タグ名を入力"
+                />
+                <button
+                  type="button"
+                  onClick={handleAddTag}
+                  className="ml-2 flex items-center justify-center rounded-full bg-gray-700 hover:bg-gray-800 text-white w-3 h-3 disabled:bg-gray-300"
+                  disabled={!tagInput.trim()}
+                  style={{ minWidth: "23px", minHeight: "23px" }}
+                  aria-label="タグ追加"
+                >
+                  <span className="material-icons text-base">add</span>
+                </button>
+              </div>
             </div>
             {/* 選択中タグ */}
             <div className="flex flex-wrap mt-1 gap-2">
