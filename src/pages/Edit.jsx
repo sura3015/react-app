@@ -7,7 +7,7 @@ const isValidUrl = (url) => {
     if (!url) return true; // 空文字列は有効とみなす
     new URL(url);
     return true;
-  } catch (_) {
+  } catch {
     return false;
   }
 };

@@ -154,7 +154,7 @@ export default function Home() {
               "無効なファイル形式です。JSON配列をアップロードしてください。"
             );
           }
-        } catch (error) {
+        } catch {
           alert("JSONファイルのパース中にエラーが発生しました。");
         }
       };
@@ -278,14 +278,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6.5 mt-4">
+      <div className="flex flex-wrap gap-4 mt-4">
         {grooves.length === 0 && (
           <p className="text-gray-500">まだグルーヴがありません。</p>
         )}
         {displayedGrooves.map((groove) => (
           <div
             key={groove.id}
-            className="bg-white shadow-lg rounded-2xl p-4 w-full max-w-md"
+            className="bg-white shadow-lg rounded-2xl p-4 flex-grow w-full md:w-auto md:max-w-90"
           >
             <h2 className="text-xl font-semibold">{groove.title}</h2>
             <p className="text-gray-500">アーティスト：{groove.artist}</p>
@@ -305,15 +305,11 @@ export default function Home() {
                 </button>
               ))}
               <div
-                className={`mt-2 p-1 rounded text-xs font-semibold inline-block ${
-                  groove.progress === 5
-                    ? "text-green-500"
-                    : groove.progress === 4
+                className={`min-w-[80px] mt-2 p-1 rounded text-xs font-semibold inline-block ${
+                  groove.progress === 5 ? "text-green-500" : "text-gray-700"
                 }`}
               >
-                {groove.progress === 0
-                  ? "未設定"
-                  : groove.progress === 5
+                {groove.progress === 5
                   ? "完了！"
                   : `進行度：${groove.progress} / 5`}
               </div>
@@ -340,22 +336,25 @@ export default function Home() {
                   </a>
                 ))}
             </div>
-
-            <button
-              onClick={() => handleEdit(groove.id)}
-              className="mt-1 mr-2 text-sm text-blue-500 cursor-pointer hover:text-blue-400"
-            >
-              edit
-            </button>
-            <button
-              onClick={() => handleDelete(groove.id)}
-              className="mt-1 mr-47 text-sm text-red-500 cursor-pointer hover:text-red-400"
-            >
-              delete
-            </button>
-            <button className="text-xs mt-1 text-right text-gray-400">
-              {new Date(groove.date).toLocaleString()}
-            </button>
+            <div className="flex justify-between">
+              <div className="flex">
+                <button
+                  onClick={() => handleEdit(groove.id)}
+                  className="mt-1 mr-2 text-sm text-blue-500 cursor-pointer hover:text-blue-400"
+                >
+                  edit
+                </button>
+                <button
+                  onClick={() => handleDelete(groove.id)}
+                  className="mt-1 mr-0 text-sm text-red-500 cursor-pointer hover:text-red-400"
+                >
+                  delete
+                </button>
+              </div>
+              <b className="text-xs font-normal !text-gray-400 mt-2">
+                {new Date(groove.date).toLocaleString()}
+              </b>
+            </div>
             {groove.tags && groove.tags.length > 0 && (
               <div className="flex flex-wrap gap-1 mt-1">
                 {groove.tags.map((tag, index) => (
