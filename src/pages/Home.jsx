@@ -285,7 +285,7 @@ export default function Home() {
         {displayedGrooves.map((groove) => (
           <div
             key={groove.id}
-            className="bg-white shadow-lg rounded-2xl p-4 flex-grow w-full md:w-auto md:max-w-90"
+            className="bg-white shadow-lg rounded-2xl pr-4 pl-4.5 py-4 flex-grow w-full md:w-auto md:max-w-90"
           >
             <h2 className="text-xl font-semibold">{groove.title}</h2>
             <p className="text-gray-500">アーティスト：{groove.artist}</p>
