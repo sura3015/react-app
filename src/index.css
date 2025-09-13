@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-xl: 89rem;
+  --breakpoint-2xl: 110rem;
+}
+
 :root {
   line-height: 1.5;
   font-weight: 400;
@@ -62,4 +67,10 @@ h1 {
   a:hover {
     color: #747bff;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }

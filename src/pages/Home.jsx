@@ -196,47 +196,48 @@ export default function Home() {
       </div>
       <div className="flex flex-wrap items-center gap-2 mt-4">
         {/* 検索バー */}
-        <div className="flex items-center gap-2">
+        <div className="flex flex-row items-center gap-2 w-full sm:w-auto">
           <span className="material-icons">search</span>
           <input
             type="text"
             placeholder="検索..."
             value={filterText}
             onChange={(e) => setFilterText(e.target.value)}
-            className="w-53 flex-grow border-b border-gray-500 focus:border-indigo-500 py-1 px-2 appearance-none focus:outline-none bg-transparent"
+            className="w-full sm:w-60 border-b border-gray-500 focus:border-indigo-500 py-1 px-2 appearance-none focus:outline-none bg-transparent"
           />
         </div>
 
-        {/* 並び替えボタン */}
-        <button
-          onClick={sortByComplete}
-          className="ml-2 bg-slate-300 hover:bg-slate-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center"
-        >
-          並び替え
-        </button>
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          {/* 並び替えボタン */}
+          <button
+            onClick={sortByComplete}
+            className="bg-slate-300 hover:bg-slate-400 text-gray-800 font-bold py-1 px-3 rounded w-full sm:w-auto"
+          >
+            並び替え
+          </button>
 
-        {/* 未完了/すべて表示ボタン */}
-        <button
-          onClick={() => {
-            const newValue = !showOnlyIncomplete;
-            setShowOnlyIncomplete(newValue);
-            localStorage.setItem("showOnlyIncomplete", newValue);
-          }}
-          className="bg-slate-300 hover:bg-slate-400 text-gray-800 font-bold py-1 px-3 rounded inline-flex items-center"
-        >
-          {showOnlyIncomplete ? "すべて表示" : "未完了のみ"}
-        </button>
-
+          {/* 未完了/すべて表示ボタン */}
+          <button
+            onClick={() => {
+              const newValue = !showOnlyIncomplete;
+              setShowOnlyIncomplete(newValue);
+              localStorage.setItem("showOnlyIncomplete", newValue);
+            }}
+            className="bg-slate-300 hover:bg-slate-400 text-gray-800 font-bold py-1 px-3 rounded w-full sm:w-auto"
+          >
+            {showOnlyIncomplete ? "すべて表示" : "未完了のみ"}
+          </button>
+        </div>
         {/* タグ選択 */}
-        <div className="flex items-center gap-2">
+        <div className="w-full sm:w-auto">
           <select
             value={selectedTag || ""}
             onChange={(e) => {
               const value = e.target.value || null;
               setSelectedTag(value);
-              localStorage.setItem("selectedTag", value || ""); // ← 空文字を保存
+              localStorage.setItem("selectedTag", value || "");
             }}
-            className="border rounded px-2 py-1 bg-slate-200 inline-flex items-center"
+            className="border rounded px-2 py-1 bg-slate-200 w-full sm:w-auto"
           >
             <option value="">タグ：全て表示</option>
             {allTags.map((tag) => (
@@ -248,15 +249,11 @@ export default function Home() {
         </div>
 
         {/* 目標設定 */}
-        <div className="flex items-center gap-2 ml-auto ">
-          {" "}
-          {/* flex-grow を削除し、w-48 を追加 */}
-          <span className="material-icons">flag</span>
-          <div className="flex items-center border-b border-gray-500 py-1">
-            {" "}
-            {/* flex-grow を削除 */}
+        <div className="flex flex-col sm:flex-row items-center gap-2 w-full sm:ml-auto">
+          <div className="flex items-center border-b border-gray-500 py-1 w-full sm:w-auto">
+            <span className="material-icons">flag</span>
             <input
-              className="sm:w-95 w-53 appearance-none bg-transparent border-none text-gray-700 mr-1 py-1 px-2 leading-tight focus:outline-none focus:border-green-800" // flex-grow を削除
+              className="w-full sm:w-85 appearance-none bg-transparent border-none text-gray-700 mr-1 py-1 px-2 leading-tight focus:outline-none focus:border-green-800"
               type="text"
               placeholder="簡単に目標を設定できます"
               onChange={(e) => setText(e.target.value)}
@@ -278,14 +275,14 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-4 mt-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-4">
         {grooves.length === 0 && (
           <p className="text-gray-500">まだグルーヴがありません。</p>
         )}
         {displayedGrooves.map((groove) => (
           <div
             key={groove.id}
-            className="bg-white shadow-lg rounded-2xl pr-4 pl-4.5 py-4 flex-grow w-full md:w-auto md:max-w-90"
+            className="bg-white shadow-lg rounded-2xl pr-4 pl-4.5 py-4 flex-grow w-full min-w-"
           >
             <h2 className="text-xl font-semibold">{groove.title}</h2>
             <p className="text-gray-500">アーティスト：{groove.artist}</p>
